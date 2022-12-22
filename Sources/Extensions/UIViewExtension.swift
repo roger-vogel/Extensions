@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-enum SlideIn: Int { case none, parentb, parentr, parentl, childb, childr, childl }
-enum Corners { case topLeft, topRight, bottomLeft, bottomRight, left, right, top, bottom, all }
-enum FadeTo: Int { case visible, hidden, dimmed }
+public enum SlideIn: Int { case none, parentb, parentr, parentl, childb, childr, childl }
+public enum Corners { case topLeft, topRight, bottomLeft, bottomRight, left, right, top, bottom, all }
+public enum FadeTo: Int { case visible, hidden, dimmed }
 
-extension UIView {
+public extension UIView {
     
     var endx: CGFloat {
         

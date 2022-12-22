@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NumberFormatter {
+public extension NumberFormatter {
     
     func setup(grouping: Bool? = true, groupingSize: Int? = 3, showDecimal: Bool? = true, maxDecimal: Int? = 2, minDecimal: Int? = 2) {
         

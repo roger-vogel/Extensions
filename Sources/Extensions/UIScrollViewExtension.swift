@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension UIScrollView {
+public extension UIScrollView {
     
     // MARK: -  METHODS
     

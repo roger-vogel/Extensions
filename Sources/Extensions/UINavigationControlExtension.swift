@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension UINavigationController {
+public extension UINavigationController {
     
     // MARK: - METHODS
     

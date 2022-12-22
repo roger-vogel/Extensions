@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreGraphics
 
-extension UIImage {
+public extension UIImage {
     
     // MARK: - COMPUTED PROPERTIES
     var jpeg: Data? { jpegData(compressionQuality: 1) }  // QUALITY min = 0 / max = 1

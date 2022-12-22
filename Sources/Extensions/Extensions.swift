@@ -1,1 +1,1 @@
-class Extensions { }
+public class Extensions { }

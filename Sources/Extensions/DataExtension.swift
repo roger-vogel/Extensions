@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension Data {
+public extension Data {
     
     // MARK: - COMPUTED PROPERTIES
     var uiImage: UIImage? { UIImage(data: self) }

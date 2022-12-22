@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension String {
+public extension String {
     
     // MARK: - COMPUTED PROPERTIES
     var isBackspace: Bool {

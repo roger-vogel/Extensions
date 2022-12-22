@@ -8,25 +8,25 @@
 import Foundation
 import UIKit
 
-extension Int {
+public extension Int {
     
     var doubleValue: Double { return Double(self) }
     var boolValue: Bool { if self == 0 { return false } else { return true } }
 }
 
-extension Double {
+public extension Double {
     
     var intValue: Int { return Int(self) }
     var uint64Value: UInt64 { return UInt64(self) }
 }
 
-extension Float { var intValue: Int { return Int(self) } }
+public extension Float { var intValue: Int { return Int(self) } }
 
-extension CGFloat { var intValue: Int { return Int(self) } }
+public extension CGFloat { var intValue: Int { return Int(self) } }
 
-extension Bool { var intValue: Int { return self ? 1 : 0 } }
+public extension Bool { var intValue: Int { return self ? 1 : 0 } }
 
-extension Array {
+public extension Array {
     
     mutating func deleteIndicesAt(indices: inout [Int]) {
         

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension NSDictionary {
+public extension NSDictionary {
     
     // MARK: - COMPUTED PROPERTIES
     var asPrettyJSON : String? {

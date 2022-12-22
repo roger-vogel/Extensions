@@ -8,10 +8,9 @@
 import Foundation
 import UIKit
 
-extension UIPickerView {
+public extension UIPickerView {
     
     // MARK: - METHODS
-    
     @discardableResult func setRow(forKey: String, inData: [String], forComponent: Int? = 0) -> Int? {
         
         guard !forKey.isEmpty && !inData.isEmpty else { return nil }
@@ -27,7 +26,6 @@ extension UIPickerView {
         
         return nil
     }
-    
     
     @discardableResult func setRow(forState: String) -> Bool {
         

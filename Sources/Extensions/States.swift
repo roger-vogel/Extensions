@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct StateDetails {
+public struct StateDetails {
     
     var name = String()
     var abbrev = String()
 }
 
-struct States {
+public struct States {
     
     static var us: [StateDetails] = [
     

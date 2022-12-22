@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension UITextField{
+public extension UITextField{
     
     // MARK: - METHODS
     

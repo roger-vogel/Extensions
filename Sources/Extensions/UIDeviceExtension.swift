@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum Model : String {
+public enum Model : String {
 
     case simulator     = "simulator",
 
@@ -76,7 +76,7 @@ enum Model : String {
     unrecognized       = "?unrecognized?"
 }
 
-extension UIDevice {
+public extension UIDevice {
     
     // MARK: - COMPUTED PROPERTIES
     var type: Model {

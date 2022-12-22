@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension UIResponder {
+public extension UIResponder {
   
     // MARK: - METHODS
     
