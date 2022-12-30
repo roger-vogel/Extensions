@@ -22,18 +22,15 @@ public extension UITextField{
             self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: [.foregroundColor: newValue])
         }
     }
-    
-    func setLeftPadding(_ amount: CGFloat = 10) {
-
-            let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.bounds.size.height))
-            self.leftView = paddingView
-            self.leftViewMode = .always
-        }
-
-    func setRightPadding(_ amount: CGFloat = 10) {
-
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.bounds.size.height))
-        self.rightView = paddingView
+   
+    func setPadding(left: CGFloat = 0, right: CGFloat = 0) {
+        
+        let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: left, height: self.bounds.size.height))
+        self.leftView = leftPaddingView
+        self.leftViewMode = .always
+        
+        let rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: right, height: self.bounds.size.height))
+        self.rightView = rightPaddingView
         self.rightViewMode = .always
     }
 }
