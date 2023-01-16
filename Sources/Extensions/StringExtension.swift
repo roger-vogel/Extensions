@@ -249,8 +249,18 @@ public extension String {
         for c in self { if !digits.contains(String(c)) { return false } }
         return true
     }
-    
+  
     // MARK: - METHODS
+    func containsSubstring(string: String) -> Bool {
+        
+        for index in 0...(count-string.count) {
+            
+            if partial(fromIndex: index, length: string.count) == string { return true }
+        }
+        
+        return false
+    }
+    
     func evaluateFor( Format: [String] ) -> Bool {
         
         // First, the format count should match the string count
@@ -470,7 +480,6 @@ public extension String {
         return splitString
     }
     
-    // Wraps string to fit a given width
     func wrapToFit(spaceAvailable: CGFloat, withFont: UIFont) -> (text: String, lines: CGFloat) {
         
         var wrappedString = ""
