@@ -38,6 +38,30 @@ public extension String {
         } else { return false }
     }
     
+    var isValid8ByteToken: Bool {
+        
+        guard self.count == 19 else { return false }
+   
+        let tokenFormat = "XXXX-XXXX-XXXX-XXXX"
+        let hexDigits = "0123456789ABCDEF"
+        
+        for (index,value) in self.uppercased().enumerated() {
+            
+            let expectedValue = tokenFormat[index]
+            
+            if expectedValue == "-" {
+                
+                if String(value) != expectedValue { return false }
+                
+            } else {
+                
+                if !hexDigits.contains(value) { return false }
+            }
+        }
+        
+        return true
+    }
+    
     var cleanedURL: String {
     
         var cleanString = self.removePhrase(phraseToRemove: "www.")
@@ -288,7 +312,7 @@ public extension String {
                 else { continue }
             }
                 
-                // If we're expecting a cap character
+            // If we're expecting a cap character
             else if Format[c] == ">"  {
                 let evalChar: Set = [self[c]]
                 if  !evalChar.isSubset(of: capAlphas) {return false}
