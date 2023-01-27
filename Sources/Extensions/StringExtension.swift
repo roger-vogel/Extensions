@@ -277,6 +277,8 @@ public extension String {
     // MARK: - METHODS
     func containsSubstring(string: String) -> Bool {
         
+        guard !string.isEmpty else { return false }
+        
         for index in 0...(count-string.count) {
             
             if partial(fromIndex: index, length: string.count) == string { return true }
