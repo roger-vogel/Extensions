@@ -277,8 +277,16 @@ public extension String {
     // MARK: - METHODS
     func containsSubstring(string: String) -> Bool {
         
-        guard !string.isEmpty else { return false }
+        // Empty strings
+        guard !self.isEmpty && !string.isEmpty else { return false }
         
+        // Target length > source
+        guard self.count >= string.count else { return false }
+        
+        // Strings are of equal length, return whether or not they are equal
+        guard self.count != string.count else { return self == string }
+        
+        // Target is smaller than the source
         for index in 0...(count-string.count) {
             
             if partial(fromIndex: index, length: string.count) == string { return true }
