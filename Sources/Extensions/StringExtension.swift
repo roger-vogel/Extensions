@@ -227,6 +227,18 @@ public extension String {
         return formattedString
     }
     
+    var formattedDollarRounded: String {
+        
+        var formattedString = "$"
+        let formatter = NumberFormatter()
+        let theAmount = NSString(string: self).doubleValue
+        
+        formatter.setup(showDecimal: false)
+        formattedString += formatter.string(from: NSNumber(value: theAmount))!
+     
+        return formattedString
+    }
+    
     var cleanedValue: String {
         
         var cleanString = ""
