@@ -233,7 +233,7 @@ public extension String {
         let formatter = NumberFormatter()
         let theAmount = NSString(string: self).doubleValue
         
-        formatter.setup(showDecimal: false)
+        formatter.setup(grouping: true, groupingSize: 3, showDecimal: false, maxDecimal: 0, minDecimal: 0)
         formattedString += formatter.string(from: NSNumber(value: theAmount))!
      
         return formattedString
