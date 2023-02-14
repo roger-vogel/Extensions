@@ -559,6 +559,24 @@ public extension String {
         return (wrappedString,lineCounter)
     }
     
+    func splitString (byString: String) -> [String] {
+        
+        var parsedStrings = [String]()
+        var wipString = ""
+     
+        for char in self {
+            
+            if String(char) != byString { wipString += String(char) }
+            else {
+                
+                parsedStrings.append(wipString)
+                wipString = ""
+            }
+        }
+        
+        return parsedStrings
+    }
+    
     // MARK: - SUBSCRIPTING
     subscript(i: Int) -> String {
         
