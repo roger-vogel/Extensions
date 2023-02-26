@@ -577,6 +577,15 @@ public extension String {
         return parsedStrings
     }
     
+    func rightPadSpaces(count: Int) -> String {
+        
+        var paddedString = self
+        
+        for _ in 1...count { paddedString += " " }
+     
+        return paddedString
+    }
+    
     // MARK: - SUBSCRIPTING
     subscript(i: Int) -> String {
         
