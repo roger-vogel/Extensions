@@ -577,13 +577,15 @@ public extension String {
         return parsedStrings
     }
     
-    func rightPadSpaces(count: Int) -> String {
+    func padWithSpaces(before: Int? = 0, after: Int? = 0) -> String {
         
-        var paddedString = self
+        var beforePad = ""
+        var afterPad = ""
         
-        for _ in 1...count { paddedString += " " }
+        if before! != 0 { for _ in 1...before! { beforePad += " " } }
+        if after! != 0 { for _ in 1...after! { afterPad += " " } }
      
-        return paddedString
+        return beforePad + self + afterPad
     }
     
     // MARK: - SUBSCRIPTING
