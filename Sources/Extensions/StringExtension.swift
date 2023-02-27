@@ -588,6 +588,14 @@ public extension String {
         return beforePad + self + afterPad
     }
     
+    func padToWidth(width: CGFloat, font: UIFont) -> String {
+        
+        var paddedString = self
+        
+        while paddedString.widthofString(withFont: font) < width { paddedString += " " }
+        return paddedString
+    }
+    
     // MARK: - SUBSCRIPTING
     subscript(i: Int) -> String {
         
