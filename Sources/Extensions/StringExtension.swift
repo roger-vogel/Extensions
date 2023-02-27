@@ -596,6 +596,22 @@ public extension String {
         return paddedString
     }
     
+    func shiftPadToFront(count: Int) -> String {
+        
+        var adjustedPad = self
+        
+        for _ in 0..<count {
+            
+            if adjustedPad.last! == " " {
+                
+                adjustedPad.removeLast()
+                adjustedPad = " " + adjustedPad
+            }
+        }
+        
+        return adjustedPad
+    }
+    
     // MARK: - SUBSCRIPTING
     subscript(i: Int) -> String {
         
