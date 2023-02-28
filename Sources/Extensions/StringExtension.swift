@@ -597,7 +597,7 @@ public extension String {
         
         var paddedString = self
         
-        while paddedString.widthofString(withFont: font) < width { paddedString += " " }
+        while paddedString.textSize(font: font).width < width { paddedString += " " }
         return paddedString
     }
     
