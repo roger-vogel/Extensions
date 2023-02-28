@@ -596,8 +596,14 @@ public extension String {
     func padToWidth(width: CGFloat, font: UIFont) -> String {
         
         var paddedString = self
+        let stringSize = self.textSize(font: font).width
+        let spaceWidth = " ".textSize(font: font).width
         
-        while paddedString.textSize(font: font).width < width { paddedString += " " }
+        guard stringSize < width else { return self }
+        let spacesForPad = (width - stringSize)/spaceWidth
+        
+        for _ in 1...Int(spacesForPad) { paddedString += " " }
+       
         return paddedString
     }
     
