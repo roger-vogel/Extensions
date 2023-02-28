@@ -577,6 +577,11 @@ public extension String {
         return parsedStrings
     }
     
+    func textSize(font: UIFont) -> CGSize {
+        
+        return self.size(withAttributes: [NSAttributedString.Key.font: font])
+    }
+    
     func padWithSpaces(before: Int? = 0, after: Int? = 0) -> String {
         
         var beforePad = ""
