@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public enum Justify: Int { case left, center, right }
+public enum Justification: Int { case left, center, right }
 
 public extension String {
     
@@ -625,7 +625,7 @@ public extension String {
         return adjustedPad
     }
     
-    func justified(width: CGFloat, justification: Justify, font: UIFont) -> String {
+    func justified(width: CGFloat, justification: Justification, font: UIFont) -> String {
         
         let justifiedText = self
         let widthOfSpace = " ".textSize(font: font).width
