@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+public enum Justify: Int { case left, center, right }
+
 public extension String {
     
     // MARK: - COMPUTED PROPERTIES
@@ -621,6 +623,27 @@ public extension String {
         }
         
         return adjustedPad
+    }
+    
+    func justified(width: CGFloat, justification: Justify, font: UIFont) -> String {
+        
+        let justifiedText = self
+        let widthOfSpace = " ".textSize(font: font).width
+        let paddingNeeded = width - textSize(font: font).width
+        
+        switch justification {
+            
+            case .left:
+                return self
+            
+            case .right:
+                let padding = paddingNeeded/widthOfSpace
+                return justifiedText.padWithSpaces(before: Int(padding))
+                
+            case .center:
+                let padding = (paddingNeeded/2)/widthOfSpace
+                return justifiedText.padWithSpaces(before: Int(padding), after: Int(padding))
+        }
     }
     
     // MARK: - SUBSCRIPTING
