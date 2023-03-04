@@ -627,6 +627,8 @@ public extension String {
     
     func justified(width: CGFloat, justification: Justification, font: UIFont) -> String {
         
+        guard width > textSize(font: font).width else { return self }
+        
         let justifiedText = self
         let widthOfSpace = " ".textSize(font: font).width
         let paddingNeeded = width - textSize(font: font).width
