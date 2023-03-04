@@ -625,27 +625,18 @@ public extension String {
         return adjustedPad
     }
     
-    func justified(width: CGFloat, justification: Justification, font: UIFont) -> String {
+    func justified(textRect: CGRect, justification: Justification, font: UIFont) -> CGRect {
         
-        guard width > textSize(font: font).width else { return self }
+        if self.textSize(font: font).width > textRect.width { return textRect }
         
-        let justifiedText = self
-        let widthOfSpace = " ".textSize(font: font).width
-        let paddingNeeded = width - textSize(font: font).width
+        var theTextRect = textRect
+        let paddingRequired = textRect.width - self.textSize(font: font).width
         
-        switch justification {
+        if justification == .left { return theTextRect }
+        else if justification == .right { theTextRect.origin.x += paddingRequired }
+        else { theTextRect.origin.x += (paddingRequired/2) }
             
-            case .left:
-                return self
-            
-            case .right:
-                let padding = paddingNeeded/widthOfSpace
-                return justifiedText.padWithSpaces(before: Int(padding))
-                
-            case .center:
-                let padding = (paddingNeeded/2)/widthOfSpace
-                return justifiedText.padWithSpaces(before: Int(padding), after: Int(padding))
-        }
+        return theTextRect
     }
     
     // MARK: - SUBSCRIPTING
