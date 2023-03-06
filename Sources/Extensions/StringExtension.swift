@@ -566,10 +566,15 @@ public extension String {
         var parsedStrings = [String]()
         var wipString = ""
      
-        for char in self {
+        for (index,value) in self.enumerated() {
             
-            if String(char) != byString { wipString += String(char) }
-            else {
+            if String(value) != byString { wipString += String(value) }
+            else if index == self.count-1 {
+               
+                parsedStrings.append(wipString)
+                wipString = ""
+
+            } else {
                 
                 parsedStrings.append(wipString)
                 wipString = ""
