@@ -565,22 +565,23 @@ public extension String {
         
         var parsedStrings = [String]()
         var wipString = ""
+        var theIndex: Int?
+        var theWipString: String?
      
         for (index,value) in self.enumerated() {
             
+            theIndex = index
+            theWipString = wipString
+            
             if String(value) != byString { wipString += String(value) }
-            else if index == self.count-1 {
-               
-                parsedStrings.append(wipString)
-                wipString = ""
-
-            } else {
+            else {
                 
                 parsedStrings.append(wipString)
                 wipString = ""
             }
         }
         
+        if theIndex! == self.count-1 { parsedStrings.append(theWipString!)}
         return parsedStrings
     }
     
