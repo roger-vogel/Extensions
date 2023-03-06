@@ -571,7 +571,6 @@ public extension String {
         for (index,value) in self.enumerated() {
             
             theIndex = index
-            theWipString = wipString
             
             if String(value) != byString { wipString += String(value) }
             else {
@@ -579,6 +578,8 @@ public extension String {
                 parsedStrings.append(wipString)
                 wipString = ""
             }
+            
+            theWipString = wipString
         }
         
         if theIndex! == self.count-1 { parsedStrings.append(theWipString!)}
