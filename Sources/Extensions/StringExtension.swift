@@ -287,7 +287,20 @@ public extension String {
         for c in self { if !digits.contains(String(c)) { return false } }
         return true
     }
-  
+    
+    var cleanedOfHiddenCharacters: String {
+        
+        var cleanedString = ""
+        
+        for index in 0..<self.count {
+            
+            let char = Character(self[index])
+            if char.isASCII { cleanedString.append(self[index]) }
+        }
+        
+        return cleanedString
+    }
+    
     // MARK: - METHODS
     func containsSubstring(string: String) -> Bool {
         
@@ -647,17 +660,6 @@ public extension String {
         return theTextRect
     }
     
-    func cleanHiddenCharactersAt(indices: [Int]) -> String {
-        
-        var cleanedString = ""
-        
-        for index in 0..<self.count {
-            
-            if !indices.contains(index) { cleanedString.append(self[index]) }
-        }
-        
-        return cleanedString
-    }
     
     // MARK: - SUBSCRIPTING
     subscript(i: Int) -> String {
