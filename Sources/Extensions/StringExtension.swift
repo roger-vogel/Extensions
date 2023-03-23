@@ -647,6 +647,19 @@ public extension String {
         return theTextRect
     }
     
+    func cleanHiddenCharactersFrom(string: String, indices: [Int]) -> String {
+        
+        var cleanedString = ""
+        
+        for index in 0..<string.count {
+            
+            if !indices.contains(index) { cleanedString.append(string[index]) }
+        }
+        
+        return cleanedString
+        
+    }
+    
     // MARK: - SUBSCRIPTING
     subscript(i: Int) -> String {
         
