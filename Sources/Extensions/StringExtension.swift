@@ -582,7 +582,12 @@ public extension String {
             theWipString = wipString
         }
         
-        if theIndex! == self.count-1 { parsedStrings.append(theWipString!)}
+        if theIndex! == self.count-1 {
+            
+            if String(theWipString!.first!) == "" { theWipString!.removeFirst() }
+            parsedStrings.append(theWipString!)
+            
+        }
         return parsedStrings
     }
     
