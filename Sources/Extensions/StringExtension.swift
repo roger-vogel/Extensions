@@ -295,7 +295,7 @@ public extension String {
         for index in 0..<self.count {
             
             let char = Character(self[index])
-            if char.isASCII { cleanedString.append(self[index]) }
+            if char.isASCII || char == "\r" || char == "\n" { cleanedString.append(self[index]) }
         }
         
         return cleanedString
