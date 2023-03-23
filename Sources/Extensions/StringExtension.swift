@@ -523,12 +523,8 @@ public extension String {
             }
         }
         
-        if subString != "" {
-            
-            if String(subString.first!) == "" { subString.removeFirst() }
-            splitString.append(subString)
-        }
-        
+        if subString != "" { splitString.append(subString) }
+     
         return splitString
     }
     
