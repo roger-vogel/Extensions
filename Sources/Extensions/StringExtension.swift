@@ -523,7 +523,11 @@ public extension String {
             }
         }
         
-        if subString != "" { splitString.append(subString) }
+        if subString != "" {
+            
+            if String(subString.first!) == "" { subString.removeFirst() }
+            splitString.append(subString)
+        }
         
         return splitString
     }
@@ -582,12 +586,8 @@ public extension String {
             theWipString = wipString
         }
         
-        if theIndex! == self.count-1 {
-            
-            if String(theWipString!.first!) == "" { theWipString!.removeFirst() }
-            parsedStrings.append(theWipString!)
-            
-        }
+        if theIndex! == self.count-1 { parsedStrings.append(theWipString!) }
+     
         return parsedStrings
     }
     
