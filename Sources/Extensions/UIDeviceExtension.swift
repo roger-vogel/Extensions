@@ -276,7 +276,7 @@ public extension UIDevice {
         return Model.unrecognized
     }
     
-    var name: String {
+    var deviceName: String {
         
         var systemInfo = utsname()
         uname(&systemInfo)
