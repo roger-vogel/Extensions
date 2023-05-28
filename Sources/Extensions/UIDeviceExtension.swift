@@ -275,4 +275,175 @@ public extension UIDevice {
         
         return Model.unrecognized
     }
+    
+    var name: String {
+        
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        
+        let modelCode = withUnsafePointer(to: &systemInfo.machine) { $0.withMemoryRebound(to: CChar.self, capacity: 1) { ptr in String.init(validatingUTF8: ptr) } }
+        
+        let modelMap : [String: String] = [
+            
+            "i386"       : "simulator",
+            "x86_64"     : "simulator",
+            
+            "iPod1,1"    : "iPod 1",
+            "iPod2,1"    : "iPod 2",
+            "iPod3,1"    : "iPod 3",
+            "iPod4,1"    : "iPod 4",
+            "iPod5,1"    : "iPod 5",
+            
+            "iPad1,1"    : "iPad",
+            "iPad1,2"    : "iPad",
+            "iPad2,1"    : "iPad 2",
+            "iPad2,2"    : "iPad 2",
+            "iPad2,3"    : "iPad",
+            "iPad2,4"    : "iPad",
+            "iPad2,5"    : "iPad Mini",
+            "iPad2,6"    : "iPad Mini",
+            "iPad2,7"    : "iPad Mini",
+            "iPad3,1"    : "iPad 3",
+            "iPad3,2"    : "iPad 3",
+            "iPad3,3"    : "iPad 3",
+            "iPad3,4"    : "iPad 4",
+            "iPad3,5"    : "iPad 4",
+            "iPad3,6"    : "iPad 4",
+            "iPad4,1"    : "iPad Air",
+            "iPad4,2"    : "iPad Air",
+            "iPad4,3"    : "iPad Air",
+            "iPad4,4"    : "Pad Mini 2",
+            "iPad4,5"    : "Pad Mini 2",
+            "iPad4,6"    : "Pad Mini 2",
+            "iPad4,7"    : "Pad Mini 3",
+            "iPad4,8"    : "Pad Mini 3",
+            "iPad4,9"    : "Pad Mini 3",
+            "iPad5,1"    : "Pad Mini 4",
+            "iPad5,2"    : "Pad Mini 4",
+            "iPad5,3"    : "iPad Air 2",
+            "iPad5,4"    : "iPad Air 2",
+            "iPad6,3"    : "iPad Pro 9x7",
+            "iPad6,4"    : "iPad Pro 9x7",
+            "iPad6,7"    : "iPad Pro 12x9",
+            "iPad6,8"    : "iPad Pro 12x9",
+            "iPad6,11"   : "iPad",
+            "iPad6,12"   : "iPad",
+            "iPad7,1"    : "iPad Pro 2",
+            "iPad7,2"    : "iPad Pro 2",
+            "iPad7,3"    : "iPad Pro 2 10x5",
+            "iPad7,4"    : "iPad Pro 2 10x5",
+            "iPad7,5"    : "iPad6",
+            "iPad7,6"    : "iPad6",
+            "iPad7,11"   : "iPad7",
+            "iPad7,12"   : "iPad7",
+            "iPad8,1"    : "iPad Pro 3 11",
+            "iPad8,2"    : "iPad Pro 3 11",
+            "iPad8,3"    : "iPad Pro 3 11",
+            "iPad8,4"    : "iPad Pro 3 11",
+            "iPad8,5"    : "iPad Pro 3 12x9",
+            "iPad8,6"    : "iPad Pro 3 12x9",
+            "iPad8,7"    : "iPad Pro 3 12x9",
+            "iPad8,8"    : "iPad Pro 3 12x9",
+            "iPad8,9"    : "iPad Pro 4 11",
+            "iPad8,10"   : "iPad Pro 4 11",
+            "iPad8,11"   : "iPad Pro 4 12x9",
+            "iPad8,12"   : "iPad Pro 4 12x9",
+            "iPad11,1"   : "iPad Mini 5",
+            "iPad11,2"   : "iPad Mini 5",
+            "iPad11,3"   : "iPad Air 3",
+            "iPad11,4"   : "iPad Air 3",
+            "iPad11,6"   : "iPad 8",
+            "iPad11,7"   : "iPad 8",
+            "iPad12,1"   : "iPad 9",
+            "iPad12,2"   : "iPad 9",
+            "iPad13,1"   : "iPad Air 4",
+            "iPad13,2"   : "iPad Air 4",
+            "iPad13,4"   : "iPad Pro 5 11",
+            "iPad13,5"   : "iPad Pro 5 11",
+            "iPad13,6"   : "iPad Pro 5 11",
+            "iPad13,7"   : "iPad Pro 5 11",
+            "iPad13,8"   : "iPad Pro 5 12x9",
+            "iPad13,9"   : "iPad Pro 5 12x9",
+            "iPad13,10"  : "iPad Pro 5 12x9",
+            "iPad13,11"  : "iPad Pro 5 12x9",
+            "iPad13,16"  : "iPad Air5",
+            "iPad13,17"  : "iPad Air5",
+            "iPad13,18"  : "iPad 10",
+            "iPad13,19"  : "iPad 10",
+            "iPad14,1"   : "iPad Mini 6",
+            "iPad14,2"   : "iPad Mini 6",
+            "iPad14,3"   : "iPad Pro 4 11",
+            "iPad14,4"   : "iPad Pro 4 11",
+            "iPad14,5"   : "iPad Pro 6 12x9",
+            "iPad14,6"   : "iPad Pro 6 12x9",
+       
+            "iPhone3,1"  : "iPhone 4",
+            "iPhone3,2"  : "iPhone 4",
+            "iPhone3,3"  : "iPhone 4",
+            "iPhone4,1"  : "iPhone 4S",
+            "iPhone5,1"  : "iPhone 5",
+            "iPhone5,2"  : "iPhone 5",
+            "iPhone5,3"  : "iPhone 5C",
+            "iPhone5,4"  : "iPhone 5C",
+            "iPhone6,1"  : "iPhone 5S",
+            "iPhone6,2"  : "iPhone 5S",
+            "iPhone7,1"  : "iPhone 6 Plus",
+            "iPhone7,2"  : "iPhone 6",
+            "iPhone8,1"  : "iPhone 6S",
+            "iPhone8,2"  : "iPhone 6S Plus",
+            "iPhone8,4"  : "iPhone SE",
+            "iPhone9,1"  : "iPhone 7",
+            "iPhone9,3"  : "iPhone 7",
+            "iPhone9,2"  : "iPhone 7 Plus",
+            "iPhone9,4"  : "iPhone 7 Plus",
+            "iPhone10,1" : "iPhone 8",
+            "iPhone10,4" : "iPhone 8",
+            "iPhone10,2" : "iPhone 8 Plus",
+            "iPhone10,5" : "iPhone 8 Plus",
+            "iPhone10,3" : "iPhoneX",
+            "iPhone10,6" : "iPhoneX",
+            "iPhone11,2" : "iPhoneXS",
+            "iPhone11,4" : "iPhone XS Max",
+            "iPhone11,6" : "iPhone XS Max",
+            "iPhone11,8" : "iPhone XR",
+            "iPhone12,1" : "iPhone 11",
+            "iPhone12,3" : "iPhone 11 Pro",
+            "iPhone12,5" : "iPhone 11 Pro Max",
+            "iPhone12,8" : "iPhone SE 2",
+            "iPhone13,1" : "iPhone 12 Mini",
+            "iPhone13,2" : "iPhone 12",
+            "iPhone13,3" : "iPhone 12 Pro",
+            "iPhone13,4" : "iPhone 12 Pro Max",
+            "iPhone14,2" : "iPhone 13 Pro",
+            "iPhone14,3" : "iPhone 13 Pro Max",
+            "iPhone14,4" : "iPhone 13 Mini",
+            "iPhone14,5" : "iPhone 13",
+            "iPhone14,6" : "iPhone SE 3",
+            "iPhone14,7" : "iPhone 14",
+            "iPhone14,8" : "iPhone 14 Plus",
+            "iPhone15,2" : "iPhone 14 Pro",
+            "iPhone15,3" : "iPhone 14 Pro Max",
+            
+            "AppleTV5,3" : "Apple TV",
+            "AppleTV6,2" : "Apple TV 4K"
+        ]
+        
+        if let model = modelMap[modelCode!] {
+            
+            if model == "simulator" {
+                
+                if let simModelCode = ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] {
+                    
+                    if let simModel = modelMap[simModelCode] {
+                        
+                        return simModel
+                    }
+                }
+            }
+            
+            return model
+        }
+        
+        return ""
+    }
 }
