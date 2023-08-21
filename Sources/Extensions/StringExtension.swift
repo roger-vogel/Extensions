@@ -595,8 +595,8 @@ public extension String {
             theWipString = wipString
         }
         
-        if theIndex! == self.count-1 { parsedStrings.append(theWipString!) }
-     
+        if theIndex != nil { if theIndex! == self.count-1 { parsedStrings.append(theWipString!) } }
+      
         return parsedStrings
     }
     
