@@ -160,8 +160,16 @@ public extension String {
         
         get {
             
-            guard self.count == 10 else { return self }
-            return self[0]+self[1]+self[2]+"-"+self[3]+self[4]+self[5]+"-"+self[6]+self[7]+self[8]+self[9]
+            guard self.count < 13 else { return self }
+            
+            switch self.count {
+                    
+                case 10: return self[0]+self[1]+self[2]+"-"+self[3]+self[4]+self[5]+"-"+self[6]+self[7]+self[8]+self[9]
+                case 11: return "0"+self[0]+"-"+self[1]+self[2]+self[3]+"-"+self[4]+self[5]+self[6]+"-"+self[7]+self[8]+self[9]+self[10]
+                case 12: return self[0]+self[1]+"-"+self[2]+self[3]+self[4]+"-"+self[5]+self[6]+self[7]+"-"+self[8]+self[9]+self[10]+self[11]
+                    
+                default: return self
+            }
         }
         
         set {
