@@ -162,11 +162,13 @@ public extension String {
             
             guard self.count < 13 else { return self }
             
-            switch self.count {
-                    
-                case 10: return self[0]+self[1]+self[2]+"-"+self[3]+self[4]+self[5]+"-"+self[6]+self[7]+self[8]+self[9]
-                case 11: return "0"+self[0]+"-"+self[1]+self[2]+self[3]+"-"+self[4]+self[5]+self[6]+"-"+self[7]+self[8]+self[9]+self[10]
-                case 12: return self[0]+self[1]+"-"+self[2]+self[3]+self[4]+"-"+self[5]+self[6]+self[7]+"-"+self[8]+self[9]+self[10]+self[11]
+            let cleanString = self.removeChar(charToRemove: "-")
+            
+            switch cleanString.count {
+        
+                case 10: return cleanString[0]+cleanString[1]+cleanString[2]+"-"+cleanString[3]+cleanString[4]+cleanString[5]+"-"+cleanString[6]+cleanString[7]+cleanString[8]+cleanString[9]
+                case 11: return "0"+cleanString[0]+"-"+cleanString[1]+cleanString[2]+cleanString[3]+"-"+cleanString[4]+cleanString[5]+cleanString[6]+"-"+cleanString[7]+cleanString[8]+cleanString[9]+cleanString[10]
+                case 12: return cleanString[0]+cleanString[1]+"-"+cleanString[2]+cleanString[3]+cleanString[4]+"-"+cleanString[5]+cleanString[6]+cleanString[7]+"-"+cleanString[8]+cleanString[9]+cleanString[10]+cleanString[11]
                     
                 default: return self
             }
