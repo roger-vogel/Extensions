@@ -162,7 +162,7 @@ public extension String {
             
             guard self.count < 13 else { return self }
             
-            let cleanString = self.removeChar(charToRemove: "-")
+            let cleanString = self.cleanedPhone
             
             switch cleanString.count {
         
