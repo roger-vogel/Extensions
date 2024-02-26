@@ -13,6 +13,37 @@ public enum Justification: Int { case left, center, right }
 public extension String {
     
     // MARK: - COMPUTED PROPERTIES
+    var allUpperCased: String { return self.uppercased() }
+    
+    var allLowerCased: String { return self.lowercased() }
+    
+    var firstCapOnly: String {
+        
+        var theWords = [String]()
+        let words = self.splitString(byString: " ")
+        
+        for word in words {
+            
+            var wordToCapitalize = word
+            
+            let first = wordToCapitalize.first!.uppercased()
+            wordToCapitalize.removeFirst()
+            let theRest = wordToCapitalize.lowercased()
+            
+            theWords.append(first+theRest)
+        }
+        
+        var stringValue = ""
+        
+        for (index,value) in theWords.enumerated() {
+            
+            if index == theWords.count - 1 { stringValue += value }
+            else { stringValue += (value + " ") }
+        }
+        
+        return stringValue
+    }
+  
     var isBackspace: Bool {
         
         let char = self.cString(using: String.Encoding.utf8)!
